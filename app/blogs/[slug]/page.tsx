@@ -7,16 +7,19 @@ import { Metadata } from 'next';
 // Add markdown rendering
 import ReactMarkdown from 'react-markdown';
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
-}
+// Define the params type for this page
+type BlogPostParams = {
+  slug: string;
+};
 
 // Generate metadata for the page
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  // Ensure params is treated as a Promise
-  const slug = params.slug;
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<BlogPostParams> 
+}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   const blog = await getBlogBySlug(slug);
   
   if (!blog) {
@@ -33,7 +36,6 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
 // Generate static paths for all blog posts
 export async function generateStaticParams() {
-  // Explicitly handle as async operation
   const blogs = await getAllBlogs();
   
   return blogs.map((blog) => ({
@@ -41,9 +43,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  // Ensure params is treated as a Promise
-  const slug = params.slug;
+export default async function BlogPostPage({ 
+  params 
+}: { 
+  params: Promise<BlogPostParams> 
+}) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   const blog = await getBlogBySlug(slug);
   
   if (!blog) {

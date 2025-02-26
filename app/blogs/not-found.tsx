@@ -7,7 +7,7 @@ export default function NotFound() {
         <h1 className="text-4xl font-bold mb-4">404</h1>
         <h2 className="text-2xl font-semibold mb-6">Blog Post Not Found</h2>
         <p className="text-gray-300 mb-8">
-          The blog post you&apos;re looking for doesn&apos;t exist or has been moved.
+          {"The blog post you're looking for doesn't exist or has been moved."}
         </p>
         <Link 
           href="/blogs" 
