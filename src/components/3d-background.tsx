@@ -70,8 +70,9 @@ export default function Background3D() {
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize)
-      if (containerRef.current) {
-        containerRef.current.removeChild(renderer.domElement)
+      const currentContainer = containerRef.current
+      if (currentContainer) {
+        currentContainer.removeChild(renderer.domElement)
       }
     }
   }, [])
