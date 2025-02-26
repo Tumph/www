@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  // Set the output directory to 'dist' for Vercel deployment
+  distDir: 'dist',
 };
 
 export default nextConfig;
