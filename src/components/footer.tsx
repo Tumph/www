@@ -5,7 +5,7 @@ export default function Footer() {
         <div>
           <h2 className="text-3xl font-bold mb-6 tracking-tight">GET IN TOUCH</h2>
           <p className="text-gray-300 mb-8 max-w-md">
-            {"I'm always open to new opportunities and collaborations. Feel free to reach out if you'd like to work together."}
+            {"I&apos;m always open to new opportunities and collaborations. Feel free to reach out if you&apos;d like to work together."}
           </p>
           <div className="space-y-4">
             <a 
