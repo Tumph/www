@@ -65,7 +65,7 @@ Check out the production version of Hyperloo [here](https://tumph.github.io/hype
     date: "2023-03-15",
     summary: "How I built a system to automate substitute teacher scheduling",
     content: `
-In 2023, I started looking into inefficiencies in school operations - areas where automation could replace tedious, repetitive processes. Automation was becoming increasingly practical, and I wanted to build something with real impact. That led me to a conversation with my high school’s vice principal. I asked a simple question: “What are the most time-consuming tasks you deal with daily?”
+In 2023, I started looking into inefficiencies in school operations - areas where automation could replace tedious, repetitive processes. Automation was becoming increasingly practical, and I wanted to build something with real impact. That led me to a conversation with my high school's vice principal. I asked a simple question: “What are the most time-consuming tasks you deal with daily?”
 
 The answer was clear: substitute teacher scheduling. Every morning, administrators scrambled to check which teachers were absent, cross-referencing a massive spreadsheet to manually assign substitutes. It was an inefficient, error-prone process - one that was ripe for automation. That insight led me to build Doledesk, a system designed to fully automate substitute teacher scheduling using a rules-based algorithm.
 
@@ -73,23 +73,23 @@ The answer was clear: substitute teacher scheduling. Every morning, administrato
 
 At first, scheduling substitutes seemed like a straightforward problem - identify absent teachers and match them with available subs. But the deeper I went, the more complexity I uncovered. Several constraints made this a non-trivial problem:
 
-Legal Compliance: Many school districts have strict labor laws. For example, a teacher can’t work more than three consecutive periods without a break.
+Legal Compliance: Many school districts have strict labor laws. For example, a teacher can't work more than three consecutive periods without a break.
 
-Subject Matching: Not all substitutes can teach every subject. A math teacher shouldn’t be assigned to an English class.
+Subject Matching: Not all substitutes can teach every subject. A math teacher shouldn't be assigned to an English class.
 
-Multi-Layered Dependencies: If one substitute isn’t available, the entire schedule may need to be reshuffled dynamically.
+Multi-Layered Dependencies: If one substitute isn't available, the entire schedule may need to be reshuffled dynamically.
 
-Data Privacy Restrictions: Storing teacher data required careful adherence to K-12 privacy regulations, meaning traditional database solutions weren’t viable.
+Data Privacy Restrictions: Storing teacher data required careful adherence to K-12 privacy regulations, meaning traditional database solutions weren't viable.
 
 These constraints required a robust, flexible system capable of handling real-world edge cases while optimizing for efficiency.
 
 ## Building Doledesk
 
-The core of Doledesk was a backend system built with Java and JavaScript, designed to process teacher absences and dynamically assign substitutes. Here’s how it worked:
+The core of Doledesk was a backend system built with Java and JavaScript, designed to process teacher absences and dynamically assign substitutes. Here's how it worked:
 
-Data Input Pipeline: Each morning, a fresh list of absent teachers was fed into the system. Since storing persistent data wasn’t an option due to privacy regulations, all scheduling had to happen in real-time.
+Data Input Pipeline: Each morning, a fresh list of absent teachers was fed into the system. Since storing persistent data wasn't an option due to privacy regulations, all scheduling had to happen in real-time.
 
-Algorithmic Matching: The backend used a constraint-satisfaction algorithm to assign substitutes based on availability, subject expertise, and legal guidelines. If an optimal match wasn’t found, the algorithm recursively adjusted placements.
+Algorithmic Matching: The backend used a constraint-satisfaction algorithm to assign substitutes based on availability, subject expertise, and legal guidelines. If an optimal match wasn't found, the algorithm recursively adjusted placements.
 
 Automated Notifications: Once schedules were finalized, the system sent out automated email notifications to substitutes and teachers.
 
@@ -101,9 +101,9 @@ For the UI, I opted for Bubble, a no-code editor, to accelerate frontend develop
 
 Once Doledesk was live, my school used it for a month. The result? Administrators who previously spent hours manually assigning substitutes were now completing the process in minutes. What used to be a chaotic, last-minute scramble was now a structured, automated workflow.
 
-While this project started as an experiment, it quickly became something more - proof that automation can significantly reduce administrative overhead in education. Doledesk wasn’t just about saving time; it was about ensuring that students always had the right teachers in place, improving the overall classroom experience.
+While this project started as an experiment, it quickly became something more - proof that automation can significantly reduce administrative overhead in education. Doledesk wasn't just about saving time; it was about ensuring that students always had the right teachers in place, improving the overall classroom experience.
 
-## What’s Next?
+## What's Next?
 
 Doledesk validated an important idea: many outdated, manual processes in education can be automated with the right approach. Looking forward, I see opportunities to expand this concept beyond substitute scheduling - perhaps into broader school operations or even district-wide automation tools.
     `,
@@ -123,25 +123,25 @@ Doledesk validated an important idea: many outdated, manual processes in educati
 
 In 2024, I embarked on a project to tackle inefficiencies in the recruiting industry, a journey inspired by my experience with the Waterloo Co-op program. My first co-op was at an AI company called ada, and while the opportunity was exciting, the hiring process itself was frustratingly arduous. Securing the position required significant effort, and the lack of feedback or even rejection emails while applying to other jobs left me feeling like my resume was getting lost in the void.
 
-At first, I blamed recruiters, assuming they weren’t reviewing resumes properly. However, after speaking with several recruiters, I realized the problem wasn’t them - it was the sheer volume of applications they had to process daily. Some recruiters I spoke to had thousands of resumes to sift through, often spending only 5-10 seconds per resume. Given these constraints, it became clear that recruiters simply didn’t have the bandwidth to provide personalized responses to every applicant.
+At first, I blamed recruiters, assuming they weren't reviewing resumes properly. However, after speaking with several recruiters, I realized the problem wasn't them - it was the sheer volume of applications they had to process daily. Some recruiters I spoke to had thousands of resumes to sift through, often spending only 5-10 seconds per resume. Given these constraints, it became clear that recruiters simply didn't have the bandwidth to provide personalized responses to every applicant.
 
-This insight led me to ask: Could technology streamline this process and help recruiters make better decisions, faster? That’s when I built Pare, a resume summarization tool designed to make the recruiting process more efficient.
+This insight led me to ask: Could technology streamline this process and help recruiters make better decisions, faster? That's when I built Pare, a resume summarization tool designed to make the recruiting process more efficient.
 
 ## Introducing Pare: A Resume Summarizer for ATS Platforms
 
-Pare is a browser extension that integrates with any Applicant Tracking System (ATS) to help recruiters process resumes faster. For those unfamiliar, an ATS is the software recruiters use to track applicants, manage job postings, and oversee hiring pipelines - it’s like CRM software but tailored for recruiting.
+Pare is a browser extension that integrates with any Applicant Tracking System (ATS) to help recruiters process resumes faster. For those unfamiliar, an ATS is the software recruiters use to track applicants, manage job postings, and oversee hiring pipelines - it's like CRM software but tailored for recruiting.
 
-Since recruiters only have a few seconds to assess a resume, I saw an opportunity to reduce cognitive load by providing structured, AI-generated summaries. The goal was simple: help recruiters get to the essence of a candidate’s experience in a fraction of the time.
+Since recruiters only have a few seconds to assess a resume, I saw an opportunity to reduce cognitive load by providing structured, AI-generated summaries. The goal was simple: help recruiters get to the essence of a candidate's experience in a fraction of the time.
 
 ## The Technical Approach
 
 Building Pare came with significant technical challenges. The primary complexity lay in making the extension work seamlessly across multiple ATS platforms, each with its own data structures and UI implementations. Some ATS platforms rely on React components, others use HTML pop-ups, and some simply display plain text.
 
-Here’s how Pare works:
+Here's how Pare works:
 
 Resume Extraction: Pare uses PDF.js to extract the text from resumes displayed in ATS platforms.
 
-AI-Powered Summarization: The extracted resume text is then fed into OpenAI’s GPT model with structured prompting to generate a concise, recruiter-friendly summary.
+AI-Powered Summarization: The extracted resume text is then fed into OpenAI's GPT model with structured prompting to generate a concise, recruiter-friendly summary.
 
 Dynamic Integration: The extension identifies different ATS architectures and adapts accordingly to display the summarized resume in the appropriate section of the UI.
 
@@ -161,7 +161,7 @@ Since launching Pare, several recruiters - many of whom I connected with during 
 
 The extension is available on GitHub, where users can configure it with their own OpenAI API key and install it as an unpacked Chrome extension via Developer Tools. By reducing the time recruiters spend reading resumes, Pare helps them focus on identifying the best candidates rather than drowning in an overwhelming sea of applications.
 
-## What’s Next?
+## What's Next?
 
 Pare is just the beginning. There are still many inefficiencies in the hiring process that can be optimized with AI-driven tools. Future iterations of Pare could incorporate:
 
