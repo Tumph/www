@@ -27,8 +27,8 @@ const experiences: ExperienceItem[] = [
     location: "Toronto, Ontario",
     period: "Jan. 2024 – Mar. 2024",
     description: [
-      "Developed front end components using react and typescript, and optimized features within the client interface, reporting framework, and guidance tab.",
-      "Initiating meetings with mentors within the company, developing a deep understanding of elasticsearch, rabbitmq, and redis."
+      "Developed front end components using React and Typescript, and optimized features within the client interface, reporting framework, and guidance tab.",
+      "Initiating meetings with mentors within the company, developing a deep understanding of Elasticsearch, RabbitMQ, and Redis."
     ]
   },
   {
@@ -56,7 +56,7 @@ const experiences: ExperienceItem[] = [
   {
     id: 5,
     title: "Founder",
-    company: "eggsplant.us",
+    company: "eggsplain.us",
     location: "Edison, New Jersey",
     period: "Apr. 2019 - Feb. 2022",
     description: [
