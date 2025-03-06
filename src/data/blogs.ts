@@ -43,7 +43,7 @@ Hyperloo has already gained traction. After sharing it on LinkedIn and Twitter, 
 
 For Waterloo students, the utility is clear. Hyperloo provides a structured, visual way to explore degree programs, understand prerequisite relationships, and dive into any topic of interest. Even if only a few dozen students actively use it, that's a meaningful outcome for me.
 
-But the implications go beyond Waterloo. With Hyperloo, anyone, anywhere in the world, can effectively trace the structure of a Waterloo degree and use it as a self-learning roadmap. Even though it's not a complete curriculum, the ability to map out an entire field and navigate it freely is incredibly powerful. In theory, a student in South Sudan or any remote region could use Hyperloo, coupled with Perplexity AI and other online resources, to pursue an entire degree's worth of knowledge for free.
+But the implications go beyond Waterloo. With Hyperloo, anyone, anywhere in the world, can effectively trace the structure of a Waterloo degree and use it as a self-learning roadmap. Even though it's not a complete curriculum, the ability to map out an entire field and navigate it freely is incredibly powerful. In theory, a student in a third world nation or any remote region could use Hyperloo, coupled with Perplexity AI and other online resources, to pursue an entire degree's worth of knowledge for free.
 
 ## What's Next?
 
@@ -73,13 +73,13 @@ The answer was clear: substitute teacher scheduling. Every morning, administrato
 
 At first, scheduling substitutes seemed like a straightforward problem - identify absent teachers and match them with available subs. But the deeper I went, the more complexity I uncovered. Several constraints made this a non-trivial problem:
 
-Legal Compliance: Many school districts have strict labor laws. For example, a teacher can't work more than three consecutive periods without a break.
+- Legal Compliance: Many school districts have strict labor laws. For example, a teacher can't work more than three consecutive periods without a break.
 
-Subject Matching: Not all substitutes can teach every subject. A math teacher shouldn't be assigned to an English class.
+- Subject Matching: Not all substitutes can teach every subject. A math teacher shouldn't be assigned to an English class.
 
-Multi-Layered Dependencies: If one substitute isn't available, the entire schedule may need to be reshuffled dynamically.
+- Multi-Layered Dependencies: If one substitute isn't available, the entire schedule may need to be reshuffled dynamically.
 
-Data Privacy Restrictions: Storing teacher data required careful adherence to K-12 privacy regulations, meaning traditional database solutions weren't viable.
+- Data Privacy Restrictions: Storing teacher data required careful adherence to K-12 privacy regulations, meaning traditional database solutions weren't viable.
 
 These constraints required a robust, flexible system capable of handling real-world edge cases while optimizing for efficiency.
 
@@ -87,15 +87,15 @@ These constraints required a robust, flexible system capable of handling real-wo
 
 The core of Doledesk was a backend system built with Java and JavaScript, designed to process teacher absences and dynamically assign substitutes. Here's how it worked:
 
-Data Input Pipeline: Each morning, a fresh list of absent teachers was fed into the system. Since storing persistent data wasn't an option due to privacy regulations, all scheduling had to happen in real-time.
+- Data Input Pipeline: Each morning, a fresh list of absent teachers was fed into the system. Since storing persistent data wasn't an option due to privacy regulations, all scheduling had to happen in real-time.
 
-Algorithmic Matching: The backend used a constraint-satisfaction algorithm to assign substitutes based on availability, subject expertise, and legal guidelines. If an optimal match wasn't found, the algorithm recursively adjusted placements.
+- Algorithmic Matching: The backend used a constraint-satisfaction algorithm to assign substitutes based on availability, subject expertise, and legal guidelines. If an optimal match wasn't found, the algorithm recursively adjusted placements.
 
-Automated Notifications: Once schedules were finalized, the system sent out automated email notifications to substitutes and teachers.
+- Automated Notifications: Once schedules were finalized, the system sent out automated email notifications to substitutes and teachers.
 
-Failsafe Mechanisms: If any substitute declined their assignment, the system reran the matching algorithm to fill gaps dynamically.
+- Failsafe Mechanisms: If any substitute declined their assignment, the system reran the matching algorithm to fill gaps dynamically.
 
-For the UI, I opted for Bubble, a no-code editor, to accelerate frontend development. This allowed administrators to interact with the system seamlessly without requiring any technical expertise.
+For the UI, I opted for Bubble, a no-code editor, to accelerate frontend development. This allowed me to quickly iterate on the UI and get a working product.
 
 ## Deployment and Impact
 
@@ -139,21 +139,21 @@ Building Pare came with significant technical challenges. The primary complexity
 
 Here's how Pare works:
 
-Resume Extraction: Pare uses PDF.js to extract the text from resumes displayed in ATS platforms.
+- Resume Extraction: Pare uses PDF.js to extract the text from resumes displayed in ATS platforms.
 
-AI-Powered Summarization: The extracted resume text is then fed into OpenAI's GPT model with structured prompting to generate a concise, recruiter-friendly summary.
+- AI-Powered Summarization: The extracted resume text is then fed into OpenAI's GPT model with structured prompting to generate a concise, recruiter-friendly summary.
 
-Dynamic Integration: The extension identifies different ATS architectures and adapts accordingly to display the summarized resume in the appropriate section of the UI.
+- Dynamic Integration: The extension identifies different ATS architectures and adapts accordingly to display the summarized resume in the appropriate section of the UI.
 
 ## Overcoming Edge Cases
 
 A key challenge in developing Pare was ensuring its functionality across different ATS platforms. Some ATS systems store resume data in embedded JavaScript objects, while others use dynamically generated iframes. To address these variations, Pare includes:
 
-DOM Inspection and Adaptation: The extension dynamically detects how the ATS renders resumes and adapts its extraction process accordingly.
+- DOM Inspection and Adaptation: The extension dynamically detects how the ATS renders resumes and adapts its extraction process accordingly.
 
-Asynchronous Handling: Since ATS platforms load data asynchronously, Pare waits for DOM elements to fully render before extracting content, preventing errors from incomplete data.
+- Asynchronous Handling: Since ATS platforms load data asynchronously, Pare waits for DOM elements to fully render before extracting content, preventing errors from incomplete data.
 
-Cross-Origin Requests: Some ATS platforms restrict direct access to resume content, requiring workarounds like injecting scripts into the page context to retrieve the necessary data.
+- Cross-Origin Requests: Some ATS platforms restrict direct access to resume content, requiring workarounds like injecting scripts into the page context to retrieve the necessary data.
 
 ## Adoption and Impact
 
@@ -165,11 +165,11 @@ The extension is available on GitHub, where users can configure it with their ow
 
 Pare is just the beginning. There are still many inefficiencies in the hiring process that can be optimized with AI-driven tools. Future iterations of Pare could incorporate:
 
-Customizable Summarization Styles: Allowing recruiters to tweak summary formats based on industry-specific needs.
+- Customizable Summarization Styles: Allowing recruiters to tweak summary formats based on industry-specific needs.
 
-Multi-Resume Comparisons: Automatically highlighting key differentiators between candidates.
+- Multi-Resume Comparisons: Automatically highlighting key differentiators between candidates.
 
-Integration with More ATS Platforms: Expanding native support for widely used recruiting systems.
+- Integration with More ATS Platforms: Expanding native support for widely used recruiting systems.
 
 At its core, Pare is about making hiring more efficient - both for recruiters and job seekers. By leveraging AI to handle tedious, high-volume tasks, recruiters can spend more time on what truly matters: connecting great candidates with great opportunities.
     `,
@@ -187,15 +187,21 @@ At its core, Pare is about making hiring more efficient - both for recruiters an
     content: `
 ## A Climate Engineering Experiment
 
-Climate change is one of the most pressing challenges of our time. At its core, it is an energy problem - greenhouse gases trap more solar radiation in the Earth's atmosphere, increasing surface temperatures. Efforts to mitigate climate change generally fall into two categories: reducing carbon emissions (by transitioning to renewable energy) and removing carbon already in the atmosphere (through carbon capture technologies). However, both approaches require significant time to scale up, which is why an alternative method, geoengineering, has been proposed as a temporary measure to offset rising global temperatures.
+Climate change is one of the most pressing challenges of our time. At its core, it is an energy problem - greenhouse gases trap more solar radiation in the Earth's atmosphere, increasing surface temperatures.
 
-Geoengineering strategies aim to reduce the amount of solar radiation reaching Earth. Among the various proposals - such as placing giant mirrors in space or brightening marine clouds - one of the most promising and realistic methods is stratospheric aerosol injection (SAI). This technique involves releasing small aerosol particles, such as sulfur compounds, into the stratosphere to reflect sunlight and cool the planet, similar to how volcanic eruptions impact global temperatures. A historical example of this effect was the 1991 eruption of Mount Pinatubo, which led to a temporary global cooling of 1-2 degrees Celsius.
+If you think about climate change from a physics perspective - Earth is essentially a self contained system (all the energy that arrives on Earth from the sun gets dispersed in some way or form - energy cannot be created or destroyed!) and so a thicker atmosphere with higher PPMs of greenhouse gases that trap energy more effectively would lead to more of that energy being dispersed as heat in the atmosphere instead of staying as radiation being reflected back into space. 
 
-A Practical Approach: Sulfur Injection via Jet Engine Fuel
+Current efforts to mitigate climate change generally fall into two categories: reducing carbon emissions (by transitioning to renewable energy) and removing carbon already in the atmosphere (through carbon capture technologies). However, this ignores the fact that from a physics perspective, if you want to reduce the energy trapped in a system - you could increase permabilility of the system so less energy is trapped (current methods) - but you could also just prevent that energy from reaching the system in the first place.
 
-Rather than deploying a specialized fleet of aircraft carrying sulfur dioxide tanks for stratospheric aerosol injection, my project explored a more efficient approach: integrating sulfur directly into jet fuel. This concept allows aircraft to release sulfur precursors passively as they fly, eliminating the need for dedicated spraying equipment.
+Geoengineering strategies aim to reduce the amount of solar radiation reaching Earth. Among the various proposals - such as placing giant mirrors in space or brightening marine clouds - one of the most promising and realistic methods (not as pie in the sky as the other ones) is stratospheric aerosol injection (SAI). This technique involves releasing small aerosol particles, such as sulfur compounds, into the stratosphere to reflect sunlight and cool the planet, similar to how volcanic eruptions impact global temperatures. The reason this is the most realistic is this has actually happened naturally before - A historical example of this effect was the 1991 eruption of Mount Pinatubo, which led to a temporary global cooling of 1-2 degrees Celsius.
 
-My research, conducted with Andrew Lockley from University College London, began with a conceptual analysis of this approach. However, to validate the feasibility of sulfur-infused jet fuel, I moved beyond theory into practical experimentation.
+Even if you reduce the amount of sunlight reaching Earth by 1-2%, you would completely negate the 2-3 centuries of anthropogenic climate change we have experienced up till today. Isn't that crazy? And the effect to plant fauna would be negligible - would you really be thirsty if your glass of water had 1% less water in it?
+
+## A Practical Approach: Sulfur Injection via Jet Engine Fuel
+
+Rather than deploying a specialized fleet of aircraft carrying sulfur dioxide tanks for stratospheric aerosol injection (as current research is doing), my project explored a more efficient approach: integrating sulfur directly into jet fuel. This concept allows aircraft to release sulfur precursors passively as they fly, eliminating the need for dedicated spraying equipment.
+
+My research, conducted with Andrew Lockley from the University College London, began with a conceptual analysis of this approach. However, to validate the feasibility of sulfur-infused jet fuel, I moved beyond theory into practical experimentation.
 
 ## Testing with a Microjet Engine
 
@@ -205,15 +211,15 @@ To test the concept, I acquired a microjet engine - a scaled-down jet engine tha
 
 The experiment involved three key components:
 
-Engine Modification & Sensor Integration:
+- Engine Modification & Sensor Integration:
 
 The microjet engine had built-in safety mechanisms that prevented it from running when detecting foreign substances in the fuel. I modified the firmware to bypass these restrictions and allow sulfur-infused fuel to be burned.
 
-## Measuring Sulfur Dioxide Emissions:
+- Measuring Sulfur Dioxide Emissions:
 
-A sulfur dioxide sensor was placed in a metal tube behind the engine to monitor emissions and quantify how much sulfur was successfully converted from fuel to atmospheric aerosol precursors.
+A sulfur dioxide sensor was placed in a copper tube behind the engine to monitor emissions and quantify how much sulfur was successfully converted from fuel to atmospheric aerosol precursors.
 
-## Thrust Performance Analysis:
+- Thrust Performance Analysis:
 
 The engine was mounted on a force dynamo, which measured changes in thrust output. Since fuel composition can impact engine efficiency, it was important to determine if adding sulfur affected performance.
 
@@ -221,9 +227,9 @@ The engine was mounted on a force dynamo, which measured changes in thrust outpu
 
 The results confirmed the fundamental hypothesis: adding sulfur to the fuel led to increased sulfur dioxide emissions, making this a viable method for stratospheric aerosol injection. However, an interesting tradeoff emerged:
 
-Small amounts of sulfur improved engine performance slightly while still generating the desired emissions.
+- Small amounts of sulfur improved engine performance slightly while still generating the desired emissions.
 
-Excessive sulfur content led to a decline in thrust output, which could make it difficult for an aircraft to reach the stratosphere.
+- Excessive sulfur content led to a decline in thrust output, which could make it difficult for an aircraft to reach the stratosphere.
 
 This revealed a crucial optimization problem - balancing sulfur levels to maximize climate impact while maintaining efficient aircraft performance.
 
@@ -232,6 +238,10 @@ This revealed a crucial optimization problem - balancing sulfur levels to maximi
 While SAI remains a high-risk, last-resort solution for climate change, my project demonstrated that passively integrating sulfur into jet fuel is a feasible approach to geoengineering. It eliminates the need for dedicated spraying infrastructure and aligns with existing aviation technology.
 
 Of course, serious risks remain. Any large-scale geoengineering effort requires extensive environmental modeling and international collaboration. History has shown that manipulating natural systems can have unintended consequences. Therefore, SAI should not be seen as an immediate solution, but rather as a potential tool for the future - one that could be deployed if climate conditions become dire enough to warrant it.
+
+Any time humans have messed with nature, we have had unintended consequences. Stories of humans releasing a certain species into the wild, and it becoming an invasive species, are a dime a dozen. And that's in a relatively simple system like an ecosystem. The atmosphere is a much more complex system, and so the potential for unintended consequences is much higher.
+
+However, I still think the climate threat, if left unchecked, is so severe that we should be exploring all options. As a last resort option to governments in the latter half of the century, SAI could be a crucial tool to save humanity.
 
 This project was an exciting step toward understanding practical climate intervention methods. The next phase could involve further optimizing the fuel mixture, testing on larger jet engines, and assessing the long-term atmospheric impacts of such an approach. While geoengineering is not a silver bullet, it may one day provide a crucial buffer as humanity transitions to a sustainable energy future.
 

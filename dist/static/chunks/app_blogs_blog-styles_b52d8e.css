@@ -1,0 +1,107 @@
+/* [project]/app/blogs/blog-styles.css [app-client] (css) */
+.markdown-content {
+  animation: .5s ease-in-out fadeIn;
+}
+
+.markdown-content > p:first-of-type:first-letter {
+  float: left;
+  font-size: 3.5rem;
+  line-height: .8;
+  margin-right: .5rem;
+  margin-top: .5rem;
+  color: #3498db;
+  font-weight: 700;
+  text-shadow: 0 0 10px #3498db4d;
+}
+
+.markdown-content h1, .markdown-content h2, .markdown-content h3 {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: .5rem;
+}
+
+.markdown-content h2 {
+  text-shadow: 0 0 10px #3498db4d;
+  letter-spacing: -.01em;
+  font-size: 1.25rem !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 1.25rem !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+}
+
+.markdown-content h1:after, .markdown-content h2:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #3498db, #0000);
+}
+
+.markdown-content h2:after {
+  height: 2px;
+  background: linear-gradient(90deg, #3498db 20%, #0000 100%);
+}
+
+.markdown-content blockquote {
+  background: linear-gradient(90deg, #3498db1a, #0000);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.markdown-content ul li::marker {
+  color: #3498db;
+}
+
+.markdown-content a {
+  position: relative;
+  transition: all .3s;
+}
+
+.markdown-content a:after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #3498db;
+  transition: width .3s;
+}
+
+.markdown-content a:hover:after {
+  width: 100%;
+}
+
+.markdown-content pre {
+  position: relative;
+  overflow: hidden;
+}
+
+.markdown-content pre:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #3498db1a 0%, #0000 100%);
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*# sourceMappingURL=app_blogs_blog-styles_b52d8e.css.map*/
