@@ -498,6 +498,163 @@ This project was an exciting step toward understanding practical climate interve
             "Mechanical Design",
             "CAD"
         ]
+    },
+    {
+        id: "5",
+        title: "reverseATS: find the most relevant job postings",
+        slug: "reverseats-project-blog",
+        date: "2025-03-19",
+        summary: "How I built a tool to find the most relevant job postings for a given resume",
+        content: `
+    Finding a co-op is hard. Finding the right co-op is even harder.
+
+As a University of Waterloo student, I've spent countless hours inside WaterlooWorks - our school's co-op job portal - scrolling through thousands of postings, unsure which ones were actually worth my time. Some jobs felt like a shot in the dark. Others looked promising but yielded no response. The whole process felt like I was playing darts blindfolded.
+
+It got me thinking: recruiters use Applicant Tracking Systems (ATS) to screen candidates before they ever see a resume. These systems do keyword matching, similarity scoring, and automatic filtering. But as applicants, we're flying blind. We don't get to see how well we match a posting. We don't get a score. We don't even get feedback.
+
+So I decided to flip the system.
+
+## Introducing ReverseATS
+
+ReverseATS is a Chrome extension that analyzes every job listing on WaterlooWorks and ranks them based on how closely they match your resume. It's a reverse-engineered ATS - one that works for students instead of recruiters.
+
+Upload your resume, visit any page on WaterlooWorks, and the extension quietly scans the jobs, compares them against your experience using keyword similarity, and injects a match score next to each posting. No buttons. No clutter. Just seamless signal in a sea of noise.
+
+## Why I Built It
+
+The core problem I wanted to solve was fit - helping students answer the question: What jobs am I most likely to get?
+It's not about filtering only the “best” jobs. It's about visibility. If I knew I was a 92% match for Job A but only a 31% match for Job B, I could make better decisions. I could prioritize jobs I had a shot at. I could tailor my applications more effectively. I could stop wasting time.
+
+ReverseATS brings that insight to the surface. It makes the job hunt feel less like roulette and more like chess.
+
+## The Technical Journey (and a Mid-Project Meltdown)
+
+ReverseATS started as a simple scraping tool. WaterlooWorks used to have predictable, REST-style URLs and static HTML content. I used Python, BeautifulSoup, and a bunch of requests logic to pull job descriptions and analyze them. It was crude but effective.
+
+Then - disaster.
+
+About 15 days into development, just as I was wrapping up, WaterlooWorks pushed a full UI redesign. The entire front-end architecture changed. No more simple HTML. No more direct URLs. Instead, job data was now fetched through a hidden API gated by dynamically generated action tokens.
+
+I had to reverse-engineer their new system. This meant:
+	•	Digging into their front-end JavaScript bundle
+	•	Locating the function responsible for generating the token
+	•	Parsing obfuscated API calls to understand how requests were signed
+	•	Extracting session cookies and mimicking the browser's authenticated state
+
+In short, it went from a weekend project to a deep-dive into front-end forensics.
+
+Eventually, I rebuilt the extension from scratch. This time, instead of HTML scraping, ReverseATS:
+	1.	Authenticates via the user's browser session (grabbing cookies and tokens after login)
+	2.	Fetches job listings in batches using WaterlooWorks' hidden API
+	3.	Parses job descriptions and metadata
+	4.	Applies a keyword similarity algorithm between your resume and each job
+	5.	Injects match scores directly into the UI - no extra clicks, no context switching
+
+All of it happens live, on the page you're already on.
+
+## Why It Matters
+
+If you're a Waterloo student, you've probably felt the fatigue of applying to dozens of jobs with no clear strategy. ReverseATS gives you a compass. It doesn't guarantee a job - but it does help you navigate smarter.
+
+My hope is that it saves students time, reduces stress, and helps people apply more strategically. The co-op system has its challenges, but that doesn't mean we have to go in blind.
+
+## What's Next?
+
+There are a lot of potential improvements: resume parsing from PDF, smarter similarity metrics, a dashboard for tracking matches over time, maybe even automated cover letter generation based on matched keywords.
+
+But for now, I'm just excited to get this into the hands of other students.
+
+If you want to try ReverseATS, you can download it [here](https://chromewebstore.google.com/detail/ReverseATS%20Job%20Matcher/ipkldjngbilnepdikdjmhjhfagbjllnj).
+    `,
+        coverImage: "/reverseats.png",
+        isProjectBlog: true,
+        projectId: 5,
+        tags: [
+            "JavaScript",
+            "Python",
+            "BeautifulSoup",
+            "Chrome Extension"
+        ]
+    },
+    {
+        id: "6",
+        title: "chatUW: A Chatbot Trained on Waterloo Student Wisdom",
+        slug: "chatuw-project-blog",
+        date: "2025-04-05",
+        summary: "How I built a RAG chatbot for the University of Waterloo",
+        content: `
+
+If you've spent more than five minutes in any University of Waterloo Discord server, Reddit thread, or group chat, you know one thing's for sure: Waterloo students love writing guides.
+
+There are guides for everything - co-op, surviving first year, U.S. immigration, prof rankings, housing, resumes, entrepreneurship, food, even memes. The sheer volume is honestly impressive.
+
+But here's the problem: most of them get lost in the noise.
+
+They're buried in outdated Google Docs, scattered across subreddits, or sitting idle in random Notion pages. New students never find them. Older students forget about them. And most of the content, while incredibly useful, ends up underutilized.
+
+That got me thinking:
+What if you could access all that wisdom instantly?
+What if there was a chatbot trained on all those student-made guides - a single place you could go to ask anything about student life at Waterloo?
+
+## Introducing chatUW
+
+chatUW is a RAG-based (Retrieval-Augmented Generation) chatbot trained on publicly available Waterloo student guides. It combines everything from co-op and U.S. visa guides to restaurant recommendations and housing tips into one seamless conversational interface.
+
+It's basically the student version of ChatGPT - but trained on Waterloo-specific life advice, experience, and resources.
+
+You can ask it questions like:
+	•	“What's the process for getting a co-op in the U.S.?”
+	•	“Where are some cheap places to eat around campus?”
+	•	“What are some tips for first-year CS students?”
+	•	“How do I deal with terrible landlords in Waterloo?”
+	•	“What's the difference between Stream 4 and Stream 8?”
+
+And it'll give you helpful, informed answers based on real guides made by real students.
+
+## Why I Built It
+
+There was no shortage of content. What was missing was accessibility. The problem wasn't that students weren't sharing knowledge - it was that their knowledge wasn't discoverable or usable at scale.
+
+We have an informal search engine already - asking upper-years in Discord servers, or sifting through Reddit threads. But that process is inefficient. You might ask a question and get 10 conflicting answers. Or worse, no response at all.
+
+chatUW is meant to be the always-on version of that. It's the “student who's been here for five years and has seen it all” - just in chatbot form.
+
+## What's Under the Hood
+
+The stack is pretty standard for a RAG LLM app:
+	•	Frontend: Built with Next.js
+	•	Security: Google reCAPTCHA to prevent abuse
+	•	Vector Store: Pinecone for fast, scalable embedding search
+	•	LLM: OpenAI GPT API
+	•	Retrieval: LangChain-powered RAG pipeline to fetch relevant student guide chunks based on your query
+
+The knowledge base was built by scraping and parsing publicly available guides, including survival guides, co-op advice docs, immigration FAQs, and more. Everything included is open-source or explicitly shared by students - nothing proprietary or copyrighted by the university itself.
+
+## Why It Matters
+
+Waterloo can be overwhelming. The systems are complex, the processes are confusing, and no two students take the same path. But there's a ton of collective wisdom floating around - it just needed a place to live.
+
+chatUW gives students an accessible, conversational way to tap into that collective knowledge. Whether you're new to campus or about to graduate, it's designed to help you navigate student life smarter and faster.
+
+## What's Next?
+
+I'm planning to:
+	•	Add document sources so users can trace where answers came from
+	•	Allow uploading of your own guide to contribute to the corpus
+	•	Integrate better UI/UX features to make chatUW feel more like a real student peer than just another bot
+
+This started as a small side project, but it's quickly becoming something I wish I had when I started at Waterloo.
+
+If you want to try chatUW or contribute to the guide corpus, reach out - I'd love to chat.
+    `,
+        coverImage: "/chatuw.png",
+        isProjectBlog: true,
+        projectId: 6,
+        tags: [
+            "Pinecone",
+            "OpenAI",
+            "Next.js"
+        ]
     }
 ];
 async function getBlogBySlug(slug) {
