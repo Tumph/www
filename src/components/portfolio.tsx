@@ -90,7 +90,7 @@ export default function Portfolio() {
   if (isLoading) {
     return (
       <section id="work" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 tracking-tight">PROJECTS</h2>
+        <h2 className="text-3xl font-bold mb-12 tracking-tight">Check Out My Projects:</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="bg-gray-900 rounded-lg border border-gray-800 h-64 animate-pulse"></div>
@@ -102,7 +102,7 @@ export default function Portfolio() {
   
   return (
     <section id="work" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-bold mb-12 tracking-tight">PROJECTS</h2>
+      <h2 className="text-3xl font-bold mb-12 tracking-tight">Check Out My Projects:</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projectsWithBlogUrls.map((project) => {
