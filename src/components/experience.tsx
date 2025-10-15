@@ -9,6 +9,18 @@ type ExperienceItem = {
 
 const experiences: ExperienceItem[] = [
   {
+    id: 0,
+    title: "ML Engineer Intern",
+    company: "Shopify",
+    location: "Toronto, Ontario",
+    period: "Sept. 2025 – Dec. 2025",
+    description: [
+      "Working on Sidekick, Shopify's assistant empowering merchants to build their shops using AI.",
+      "Building App Gen, an agentic system that programmatically generates merchant-facing apps.",
+      "Shipped a judging framework in my first 2 weeks for the App Gen planning agent, scoring plan quality and correctness; work was presented to Tobi (CEO) for guiding improvements."
+    ]
+  },
+  {
     id: 1,
     title: "Software Engineering Intern",
     company: "Arbiter",

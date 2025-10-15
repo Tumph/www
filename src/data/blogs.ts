@@ -399,7 +399,10 @@ If you want to try chatUW or contribute to the guide corpus, reach out - I'd lov
     projectId: 6,
     tags: ["Pinecone", "OpenAI", "Next.js"]
   }
+  
 ];
+
+
 
 export async function getBlogBySlug(slug: string): Promise<BlogPost | undefined> {
   return blogPosts.find(post => post.slug === slug);
