@@ -1,24 +1,26 @@
-export type BlogPost = {
-  id: string;
-  title: string;
-  slug: string;
-  date: string;
-  summary: string;
-  content: string;
-  coverImage?: string;
-  isProjectBlog: boolean;
-  projectId?: number;
-  tags: string[];
-};
+module.exports = {
 
-export const blogPosts: BlogPost[] = [
-  {
-    id: "1",
-    title: "Hyperloo: Building a Knowledge Graph for University Courses",
-    slug: "hyperloo-project-blog",
-    date: "2025-04-23",
-    summary: "How I built an algorithmically generated knowledge graph for UWaterloo programs and courses",
-    content: `
+"[project]/src/data/blogs.ts [app-rsc] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
+{
+__turbopack_esm__({
+    "blogPosts": (()=>blogPosts),
+    "getAllBlogs": (()=>getAllBlogs),
+    "getBlogBySlug": (()=>getBlogBySlug),
+    "getNonProjectBlogs": (()=>getNonProjectBlogs),
+    "getProjectBlog": (()=>getProjectBlog),
+    "getProjectBlogs": (()=>getProjectBlogs)
+});
+const blogPosts = [
+    {
+        id: "1",
+        title: "Hyperloo: Building a Knowledge Graph for University Courses",
+        slug: "hyperloo-project-blog",
+        date: "2025-04-23",
+        summary: "How I built an algorithmically generated knowledge graph for UWaterloo programs and courses",
+        content: `
 Hyperloo is a knowledge graph that maps out all topics, courses, and degrees at the University of Waterloo. Traditional degree structures tend to be abstract, making it difficult to visualize the interconnected nature of knowledge. I wanted to change that. What if you could represent an entire degree visually - showing how concepts interlink and build on one another? That question led me deep into knowledge graphs, which I found incredibly powerful as a tool for structuring and exploring complex domains.
 
 ## Why Knowledge Graphs?
@@ -53,18 +55,23 @@ Check out the production version of Hyperloo [here](https://tumph.github.io/hype
 
 
     `,
-    coverImage: "/hyperloo.png",
-    isProjectBlog: true,
-    projectId: 1,
-    tags: ["NLP", "Web Scraping", "Knowledge Graph", "Next.js"]
-  },
-  {
-    id: "2",
-    title: "Doledesk: Automating Substitute Teacher Scheduling",
-    slug: "doledesk-project-blog",
-    date: "2023-03-15",
-    summary: "How I built a system to automate substitute teacher scheduling",
-    content: `
+        coverImage: "/hyperloo.png",
+        isProjectBlog: true,
+        projectId: 1,
+        tags: [
+            "NLP",
+            "Web Scraping",
+            "Knowledge Graph",
+            "Next.js"
+        ]
+    },
+    {
+        id: "2",
+        title: "Doledesk: Automating Substitute Teacher Scheduling",
+        slug: "doledesk-project-blog",
+        date: "2023-03-15",
+        summary: "How I built a system to automate substitute teacher scheduling",
+        content: `
 In 2023, I started looking into inefficiencies in school operations - areas where automation could replace tedious, repetitive processes. Automation was becoming increasingly practical, and I wanted to build something with real impact. That led me to a conversation with my high school's vice principal. I asked a simple question: “What are the most time-consuming tasks you deal with daily?”
 
 The answer was clear: substitute teacher scheduling. Every morning, administrators scrambled to check which teachers were absent, cross-referencing a massive spreadsheet to manually assign substitutes. It was an inefficient, error-prone process - one that was ripe for automation. That insight led me to build Doledesk, a system designed to fully automate substitute teacher scheduling using a rules-based algorithm.
@@ -107,18 +114,22 @@ While this project started as an experiment, it quickly became something more - 
 
 Doledesk validated an important idea: many outdated, manual processes in education can be automated with the right approach. Looking forward, I see opportunities to expand this concept beyond substitute scheduling - perhaps into broader school operations or even district-wide automation tools.
     `,
-    coverImage: "/doledesk.png",
-    isProjectBlog: true,
-    projectId: 2,
-    tags: ["Java", "JavaScript", "Bubble"]
-  },
-  {
-    id: "3",
-    title: "Pare: Summarizing Resumes on Any ATS",
-    slug: "pare-project-blog",
-    date: "2024-09-3",
-    summary: "How I built a browser extension to summarize resumes on any ATS",
-    content: `
+        coverImage: "/doledesk.png",
+        isProjectBlog: true,
+        projectId: 2,
+        tags: [
+            "Java",
+            "JavaScript",
+            "Bubble"
+        ]
+    },
+    {
+        id: "3",
+        title: "Pare: Summarizing Resumes on Any ATS",
+        slug: "pare-project-blog",
+        date: "2024-09-3",
+        summary: "How I built a browser extension to summarize resumes on any ATS",
+        content: `
 ## The Hiring Challenge
 
 In 2024, I embarked on a project to tackle inefficiencies in the recruiting industry, a journey inspired by my experience with the Waterloo Co-op program. My first co-op was at an AI company called ada, and while the opportunity was exciting, the hiring process itself was frustratingly arduous. Securing the position required significant effort, and the lack of feedback or even rejection emails while applying to other jobs left me feeling like my resume was getting lost in the void.
@@ -173,18 +184,23 @@ Pare is just the beginning. There are still many inefficiencies in the hiring pr
 
 At its core, Pare is about making hiring more efficient - both for recruiters and job seekers. By leveraging AI to handle tedious, high-volume tasks, recruiters can spend more time on what truly matters: connecting great candidates with great opportunities.
     `,
-    coverImage: "/pare.png",
-    isProjectBlog: true,
-    projectId: 3,
-    tags: ["JavaScript", "HTML/CSS", "Git", "PDF.js"]
-  },
-  {
-    id: "4",
-    title: "SAI Microjet: Optimizing Sulfur Ratios for Geoengineering",
-    slug: "sai-microjet-project-blog",
-    date: "2022-07-09",
-    summary: "Developing a hardware rig and firmware system for a microjet engine to test optimal sulfur ratios for stratospheric aerosol injection.",
-    content: `
+        coverImage: "/pare.png",
+        isProjectBlog: true,
+        projectId: 3,
+        tags: [
+            "JavaScript",
+            "HTML/CSS",
+            "Git",
+            "PDF.js"
+        ]
+    },
+    {
+        id: "4",
+        title: "SAI Microjet: Optimizing Sulfur Ratios for Geoengineering",
+        slug: "sai-microjet-project-blog",
+        date: "2022-07-09",
+        summary: "Developing a hardware rig and firmware system for a microjet engine to test optimal sulfur ratios for stratospheric aerosol injection.",
+        content: `
 ## A Climate Engineering Experiment
 
 Climate change is one of the most pressing challenges of our time. At its core, it is an energy problem - greenhouse gases trap more solar radiation in the Earth's atmosphere, increasing surface temperatures.
@@ -246,18 +262,23 @@ However, I still think the climate threat, if left unchecked, is so severe that 
 This project was an exciting step toward understanding practical climate intervention methods. The next phase could involve further optimizing the fuel mixture, testing on larger jet engines, and assessing the long-term atmospheric impacts of such an approach. While geoengineering is not a silver bullet, it may one day provide a crucial buffer as humanity transitions to a sustainable energy future.
 
     `,
-    coverImage: "/geoeng.jpg",
-    isProjectBlog: true,
-    projectId: 4,
-    tags: ["Python", "Firmware", "Mechanical Design", "CAD"]
-  },
-  {
-    id: "5",
-    title: "reverseATS: find the most relevant job postings",
-    slug: "reverseats-project-blog",
-    date: "2025-03-19",
-    summary: "How I built a tool to find the most relevant job postings for a given resume",
-    content: `
+        coverImage: "/geoeng.jpg",
+        isProjectBlog: true,
+        projectId: 4,
+        tags: [
+            "Python",
+            "Firmware",
+            "Mechanical Design",
+            "CAD"
+        ]
+    },
+    {
+        id: "5",
+        title: "reverseATS: find the most relevant job postings",
+        slug: "reverseats-project-blog",
+        date: "2025-03-19",
+        summary: "How I built a tool to find the most relevant job postings for a given resume",
+        content: `
     Finding a co-op is hard. Finding the right co-op is even harder.
 
 As a University of Waterloo student, I've spent countless hours inside WaterlooWorks - our school's co-op job portal - scrolling through thousands of postings, unsure which ones were actually worth my time. Some jobs felt like a shot in the dark. Others looked promising but yielded no response. The whole process felt like I was playing darts blindfolded.
@@ -318,18 +339,23 @@ But for now, I'm just excited to get this into the hands of other students.
 
 If you want to try ReverseATS, you can download it [here](https://chromewebstore.google.com/detail/ReverseATS%20Job%20Matcher/ipkldjngbilnepdikdjmhjhfagbjllnj).
     `,
-    coverImage: "/reverseats.png",
-    isProjectBlog: true,
-    projectId: 5,
-    tags: ["JavaScript", "Python", "BeautifulSoup", "Chrome Extension"]
-  },
-  {
-    id: "6",
-    title: "chatUW: A Chatbot Trained on Waterloo Student Wisdom",
-    slug: "chatuw-project-blog",
-    date: "2025-04-05",
-    summary: "How I built a RAG chatbot for the University of Waterloo",
-    content: `
+        coverImage: "/reverseats.png",
+        isProjectBlog: true,
+        projectId: 5,
+        tags: [
+            "JavaScript",
+            "Python",
+            "BeautifulSoup",
+            "Chrome Extension"
+        ]
+    },
+    {
+        id: "6",
+        title: "chatUW: A Chatbot Trained on Waterloo Student Wisdom",
+        slug: "chatuw-project-blog",
+        date: "2025-04-05",
+        summary: "How I built a RAG chatbot for the University of Waterloo",
+        content: `
 
 If you've spent more than five minutes in any University of Waterloo Discord server, Reddit thread, or group chat, you know one thing's for sure: Waterloo students love writing guides.
 
@@ -394,18 +420,22 @@ This started as a small side project, but it's quickly becoming something I wish
 
 If you want to try chatUW or contribute to the guide corpus, reach out - I'd love to chat.
     `,
-    coverImage: "/chatuw.png",
-    isProjectBlog: true,
-    projectId: 6,
-    tags: ["Pinecone", "OpenAI", "Next.js"]
-  },
-{
-  id: "7",
-  title: "uwOS: a Launchpad for Waterloo Students",
-  slug: "uwos-project-blog",
-  date: "2025-10-15",
-  summary: "How I built a macOS-style “student operating system” that pulls the best UWaterloo tools into one place",
-  content: `
+        coverImage: "/chatuw.png",
+        isProjectBlog: true,
+        projectId: 6,
+        tags: [
+            "Pinecone",
+            "OpenAI",
+            "Next.js"
+        ]
+    },
+    {
+        id: "7",
+        title: "uwOS: a Launchpad for Waterloo Students",
+        slug: "uwos-project-blog",
+        date: "2025-10-15",
+        summary: "How I built a macOS-style “student operating system” that pulls the best UWaterloo tools into one place",
+        content: `
 
 At Waterloo there are dozens of genuinely useful tools, but they live across scattered sites, Discord messages, spreadsheets, and browser bookmarks. Each task starts with a hunt. I wanted one home screen that surfaces the most useful student-built, community-built, and university-built tools with zero hunting. That became **uwOS**.
 
@@ -498,18 +528,25 @@ If you want something added, or you are building a Waterloo tool, message me and
 
 Before starting any project, I ask a simple question: if I disappeared tomorrow, would this still help someone. uwOS clears that bar for me. It reduces everyday friction, and it gives student-built tools a front door that is easy to find.
   `,
-  coverImage: "/uwos.png",
-  isProjectBlog: true,
-  projectId: 7,
-  tags: ["Next.js", "React", "Tailwind", "Electron", "Student Productivity", "Electron Forge"]
-  },
-  {
-    id: "8",
-    title: "Pikachu: a Pair Programming Agent",
-    slug: "pikachu-project-blog",
-    date: "2025-09-28",
-    summary: "How we built a real-time, voice and text enabled pair programming agent and won a hackathon",
-    content: `
+        coverImage: "/uwos.png",
+        isProjectBlog: true,
+        projectId: 7,
+        tags: [
+            "Next.js",
+            "React",
+            "Tailwind",
+            "Electron",
+            "Student Productivity",
+            "Electron Forge"
+        ]
+    },
+    {
+        id: "8",
+        title: "Pikachu: a Pair Programming Agent",
+        slug: "pikachu-project-blog",
+        date: "2025-09-28",
+        summary: "How we built a real-time, voice and text enabled pair programming agent and won a hackathon",
+        content: `
 ## Pikachu ⚡ Building a Pair Programming Agent at Google AI Tinkerers Toronto
 
 Pair programming is magic when it is available. During crunch moments it rarely is. That gap is what our team tried to compress into software.
@@ -600,30 +637,232 @@ If you want to try it or jam on agents for developer workflows, reach out. I am 
 
 Check out our demo video here! 👉 https://www.youtube.com/watch?v=njt6bv6RANM
     `,
-    coverImage: "/googlehack.jpeg",
-    isProjectBlog: false,
-    tags: ["Google AI Tinkerers", "Pair Programming", "Agentic Programming", "FastAPI", "WebSocket", "Electron", "Gemini 2.0 Flash Live"]
-  }
+        coverImage: "/googlehack.jpeg",
+        isProjectBlog: false,
+        tags: [
+            "Google AI Tinkerers",
+            "Pair Programming",
+            "Agentic Programming",
+            "FastAPI",
+            "WebSocket",
+            "Electron",
+            "Gemini 2.0 Flash Live"
+        ]
+    }
 ];
-
-
-
-export async function getBlogBySlug(slug: string): Promise<BlogPost | undefined> {
-  return blogPosts.find(post => post.slug === slug);
+async function getBlogBySlug(slug) {
+    return blogPosts.find((post)=>post.slug === slug);
 }
-
-export async function getProjectBlog(projectId: number): Promise<BlogPost | undefined> {
-  return blogPosts.find(post => post.isProjectBlog && post.projectId === projectId);
+async function getProjectBlog(projectId) {
+    return blogPosts.find((post)=>post.isProjectBlog && post.projectId === projectId);
 }
-
-export async function getAllBlogs(): Promise<BlogPost[]> {
-  return blogPosts;
+async function getAllBlogs() {
+    return blogPosts;
 }
-
-export async function getNonProjectBlogs(): Promise<BlogPost[]> {
-  return blogPosts.filter(post => !post.isProjectBlog);
+async function getNonProjectBlogs() {
+    return blogPosts.filter((post)=>!post.isProjectBlog);
 }
+async function getProjectBlogs() {
+    return blogPosts.filter((post)=>post.isProjectBlog);
+}
+}}),
+"[project]/app/blogs/page.tsx [app-rsc] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
 
-export async function getProjectBlogs(): Promise<BlogPost[]> {
-  return blogPosts.filter(post => post.isProjectBlog);
-} 
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
+{
+__turbopack_esm__({
+    "default": (()=>BlogsPage),
+    "metadata": (()=>metadata)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/client/app-dir/link.js [app-rsc] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/image.js [app-rsc] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$blogs$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/data/blogs.ts [app-rsc] (ecmascript)");
+;
+;
+;
+;
+const metadata = {
+    title: 'Blogs | Aryan Gupta',
+    description: 'Blog posts about technology, projects, and more by Aryan Gupta'
+};
+async function BlogsPage() {
+    const blogs = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$blogs$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getAllBlogs"])();
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
+        className: "min-h-screen bg-black text-white",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "max-w-5xl mx-auto px-4 py-28 sm:px-6 lg:px-8",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                    className: "text-4xl font-bold mb-8 tracking-tight",
+                    children: "Blog"
+                }, void 0, false, {
+                    fileName: "[project]/app/blogs/page.tsx",
+                    lineNumber: 16,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "grid gap-10",
+                    children: blogs.map((blog)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
+                            className: "group",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                href: `/blogs/${blog.slug}`,
+                                className: "block",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "grid md:grid-cols-4 gap-6",
+                                    children: [
+                                        blog.coverImage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "md:col-span-1",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "aspect-w-16 aspect-h-9 relative overflow-hidden rounded-lg",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                                    src: blog.coverImage,
+                                                    alt: blog.title,
+                                                    fill: true,
+                                                    className: "object-cover transition-transform duration-300 group-hover:scale-105"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/blogs/page.tsx",
+                                                    lineNumber: 26,
+                                                    columnNumber: 25
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/blogs/page.tsx",
+                                                lineNumber: 25,
+                                                columnNumber: 23
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/blogs/page.tsx",
+                                            lineNumber: 24,
+                                            columnNumber: 21
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: blog.coverImage ? "md:col-span-3" : "md:col-span-4",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "flex items-center text-sm text-gray-400 mb-2",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("time", {
+                                                            dateTime: blog.date,
+                                                            children: new Date(blog.date).toLocaleDateString('en-US', {
+                                                                year: 'numeric',
+                                                                month: 'long',
+                                                                day: 'numeric'
+                                                            })
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/blogs/page.tsx",
+                                                            lineNumber: 38,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        blog.isProjectBlog && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    className: "mx-2",
+                                                                    children: "•"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/blogs/page.tsx",
+                                                                    lineNumber: 46,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    className: "text-blue-400",
+                                                                    children: "Project Blog"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/blogs/page.tsx",
+                                                                    lineNumber: 47,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/app/blogs/page.tsx",
+                                                    lineNumber: 37,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                                    className: "text-2xl font-semibold mb-2 group-hover:text-blue-400 transition-colors",
+                                                    children: blog.title
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/blogs/page.tsx",
+                                                    lineNumber: 52,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-gray-300 mb-4",
+                                                    children: blog.summary
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/blogs/page.tsx",
+                                                    lineNumber: 56,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "flex flex-wrap gap-2",
+                                                    children: blog.tags.map((tag)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            className: "px-2 py-1 text-xs bg-gray-800 rounded-full text-gray-300",
+                                                            children: tag
+                                                        }, tag, false, {
+                                                            fileName: "[project]/app/blogs/page.tsx",
+                                                            lineNumber: 60,
+                                                            columnNumber: 25
+                                                        }, this))
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/blogs/page.tsx",
+                                                    lineNumber: 58,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/app/blogs/page.tsx",
+                                            lineNumber: 36,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/blogs/page.tsx",
+                                    lineNumber: 22,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/app/blogs/page.tsx",
+                                lineNumber: 21,
+                                columnNumber: 15
+                            }, this)
+                        }, blog.id, false, {
+                            fileName: "[project]/app/blogs/page.tsx",
+                            lineNumber: 20,
+                            columnNumber: 13
+                        }, this))
+                }, void 0, false, {
+                    fileName: "[project]/app/blogs/page.tsx",
+                    lineNumber: 18,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/app/blogs/page.tsx",
+            lineNumber: 15,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/app/blogs/page.tsx",
+        lineNumber: 14,
+        columnNumber: 5
+    }, this);
+}
+}}),
+"[project]/app/blogs/page.tsx [app-rsc] (ecmascript, Next.js server component)": ((__turbopack_context__) => {
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, t: __turbopack_require_real__ } = __turbopack_context__;
+{
+__turbopack_export_namespace__(__turbopack_import__("[project]/app/blogs/page.tsx [app-rsc] (ecmascript)"));
+}}),
+"[project]/.next-internal/server/app/blogs/page/actions.js [app-rsc] (ecmascript)": (function(__turbopack_context__) {
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
+{
+}}),
+
+};
+
+//# sourceMappingURL=_552f80._.js.map
