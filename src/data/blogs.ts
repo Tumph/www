@@ -398,8 +398,112 @@ If you want to try chatUW or contribute to the guide corpus, reach out - I'd lov
     isProjectBlog: true,
     projectId: 6,
     tags: ["Pinecone", "OpenAI", "Next.js"]
+  },
+{
+  id: "7",
+  title: "uwOS: a Launchpad for Waterloo Students",
+  slug: "uwos-project-blog",
+  date: "2025-10-15",
+  summary: "How I built a macOS-style “student operating system” that pulls the best UWaterloo tools into one place",
+  content: `
+
+At Waterloo there are dozens of genuinely useful tools, but they live across scattered sites, Discord messages, spreadsheets, and browser bookmarks. Each task starts with a hunt. I wanted one home screen that surfaces the most useful student-built, community-built, and university-built tools with zero hunting. That became **uwOS**.
+
+uwOS looks and feels like macOS Launchpad, but for student life. It is a clean grid of tiles with clear categories, instant open, and keyboard-first navigation. You hit one key, you are inside the thing you need. That is it.
+
+
+## What is inside
+
+**Academic**
+- **UW Flow** - course and professor reviews: <https://uwflow.com>
+- **Semesters.ca** - academic planner: <https://semesters.ca>
+- **chatUW** - RAG assistant trained on real upper-year advice
+
+**Campus**
+- **Waterloo Underground Tunnel Map** - get around fast
+- **Spots** - find study spaces on campus
+
+**Transportation**
+- **GRT Transit** - transit updates for Waterloo
+
+**Community**
+- **Waterloo Reddit** - see what the community is talking about
+
+**Productivity**
+- **Perplexity** - quick research and answers
+- **Chrome** - jump straight to the web
+- **reverseATS** - matches you to WaterlooWorks jobs
+
+**Lifestyle**
+- **Waterloo Weather** - plan your day
+- **CupboardCuisine** - AI recipe planner: <https://cupboardcuisine.ai>
+- **Workout.lol** - AI workout planner: <https://workout.lol>
+
+**Tech**
+- **Hyperloo** - knowledge base of programs, majors, and courses
+- **Watguessr** - Waterloo campus GeoGuessr: <https://watguessr.io>
+
+Some of these apps are mine, some were built by other students, and some come from companies or UW. The point is one home and zero friction.
+
+
+## Why a Launchpad
+
+I like projects that reduce friction. Hyperloo mapped the knowledge space for degrees. reverseATS surfaced fit for job searches. uwOS is in the same family, but focused on daily life. Instead of remembering ten URLs or digging through old chats for a link, I want one surface that launches what matters. Familiarity helps, so I borrowed the Launchpad mental model that many students already use every day.
+
+
+## Building uwOS
+
+**Design language**
+- Familiar on purpose. A simple dark canvas, rounded tiles, crisp icons, and readable labels that work on phone and desktop.
+- Motion kept minimal so focus stays on the tools, not the chrome.
+
+**Architecture**
+- **Web first** - Next.js and React with Tailwind for styling. Deployed on Vercel for fast static delivery.
+- **Tile registry** - a single JSON registry defines every app: name, icon, category, URL, and optional launch behavior. Adding a tile is one entry, then done.
+- **Search and keyboard** - type to filter, arrow keys to move, Enter to launch. No learning curve.
+- **Electron wrapper** - wrapped with Electron so uwOS can live as a desktop app. Electron Forge handles packaging.
+
+**Implementation details I enjoyed**
+- A small Node script exports tile icons at multiple sizes so the grid stays crisp on macOS and Linux.
+- Packaging surfaced a funny roadblock: a missing DMG background image that threw an ENOENT error in a macOS build. One image later, green checks across the board.
+- Accessibility matters. Tiles support focus states and labels so fast keyboard use is the default, not an afterthought.
+
+**What it is not**
+- uwOS is not another portal or tracker. It is a launcher. It opens useful things fast and gets out of the way.
+
+## Utility
+
+If you are a first year, uwOS lowers the cost of discovering the campus toolkit. If you are deep in co-op season, it becomes a faster jump into the tools you already use every day. Even small time savings, repeated daily, compound over a term.
+
+
+## What is next
+
+- **Open submissions** - a simple contribution flow so any student can add a tile with one JSON entry.
+- **Personalization** - pin and reorder tiles, hide what you do not use, save presets by program or year.
+- **Smart groups** - dynamic sections like Today that surface weather, transit, and upcoming deadlines.
+- **Desktop builds** - fuller Electron packaging for macOS, then Windows and Linux.
+- **Tiny helpers** - lightweight badges for live transit alerts or current weather without bloating the app.
+
+If you have ideas, or you built a tool that helps Waterloo students, I want to hear from you.
+
+
+## Try it
+
+Live here: **<https://uwos.vercel.app>**
+
+If you want something added, or you are building a Waterloo tool, message me and I will make room for it. The goal is simple: one home, zero friction.
+
+
+## Why this matters to me
+
+Before starting any project, I ask a simple question: if I disappeared tomorrow, would this still help someone. uwOS clears that bar for me. It reduces everyday friction, and it gives student-built tools a front door that is easy to find.
+  `,
+  coverImage: "/uwos.png",
+  isProjectBlog: true,
+  projectId: 7,
+  tags: ["Next.js", "React", "Tailwind", "Electron", "Student Productivity", "Electron Forge"]
   }
-  
+
 ];
 
 
