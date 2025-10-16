@@ -598,7 +598,7 @@ I judge projects by a simple question: if I disappeared tomorrow, would this sti
 If you want to try it or jam on agents for developer workflows, reach out. I am happy to share the repo, walk through the architecture, and keep building.
 
 
-Check out our demo video here! 👉 https://www.youtube.com/watch?v=njt6bv6RANM
+Check out our demo video here! 👉 [Youtube Video](https://www.youtube.com/watch?v=njt6bv6RANM)
     `,
     coverImage: "/googlehack.jpeg",
     isProjectBlog: false,
