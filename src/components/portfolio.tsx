@@ -30,13 +30,22 @@ const projects: Project[] = [
     url: "/blogs/hyperloo-project-blog"
   },
   {
-    id: 2,
-    title: "Doledesk",
-    category: "Management System",
-    description: "Developed a JavaScript and Java-based teacher substitute management system, automating placements and saving 360+ admin hours annually.",
-    technologies: ["JavaScript", "Java", "Bubble", "Git", "PostgreSQL"],
-    image: "/doledesk.png",
-    url: "/blogs/doledesk-project-blog"
+    id: 8,
+    title: "Pikachu",
+    category: "AI Agent",
+    description: "Built a real-time, voice and text enabled pair programming agent that helps developers debug code, search documentation, and propose fixes using Gemini 2.0 Flash Live.",
+    technologies: ["FastAPI", "WebSocket", "Electron", "Gemini 2.0 Flash Live", "Google ADK"],
+    image: "/googlehack.jpeg",
+    url: "/blogs/pikachu-project-blog"
+  },
+  {
+    id: 7,
+    title: "uwOS",
+    category: "Web Application",
+    description: "Built a macOS-style launchpad for Waterloo students that aggregates the best UWaterloo tools into one place, reducing friction in daily student life.",
+    technologies: ["Next.js", "React", "Tailwind", "Electron", "Electron Forge"],
+    image: "/uwos.png",
+    url: "/blogs/uwos-project-blog"
   },
   {
     id: 3,
@@ -46,15 +55,6 @@ const projects: Project[] = [
     technologies: ["JavaScript", "HTML/CSS", "Git", "PDF.js"],
     image: "/pare.png",
     url: "/blogs/pare-project-blog"
-  },
-  {
-    id: 4,
-    title: "SAI Microjet",
-    category: "Hardware and Firmware",
-    description: "Built a hardware rig and firmware system for a microjet engine, using it to test optimal ratios of sulfur for stratospheric aerosol injection research.",
-    technologies: ["Python", "Firmware", "Mechanical Design", "CAD"],
-    image: "/geoeng.jpg",
-    url: "/blogs/sai-microjet-project-blog"
   }
 ]
 
