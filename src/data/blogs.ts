@@ -603,6 +603,54 @@ Check out our demo video here! 👉 [Youtube Video](https://www.youtube.com/watc
     coverImage: "/googlehack.jpeg",
     isProjectBlog: false,
     tags: ["Google AI Tinkerers", "Pair Programming", "Agentic Programming", "FastAPI", "WebSocket", "Electron", "Gemini 2.0 Flash Live"]
+  },
+  {
+    id: "9",
+    title: "Ontology Project",
+    slug: "ontology-project-blog",
+    date: "2026-03-27",
+    summary: "Building automatic RDF/OWL ontologies from plain story text with LLM extraction, coreference resolution, and SPARQL over narrative knowledge graphs",
+    content: `
+I have always been fascinated by graphs. To me, graphs are how humans actually think about information subconsciously. The way our brain understands and compartmentalizes information is through story and analogy (analogy and storytelling are really the only cognitive processes we have over apes), and this is how humans think about complex ideas: by distilling and relating them to something our neural net is already trained on. Graphs help us view information in space, and as creatures who evolved in the data corpus of physical space rather than the data corpus of text (which is an abstraction of our own creation), viewing information spatially helps humans gain a better understanding of complex data.
+
+## From Hyperloo to ontology
+
+About a year ago, fascinated with the idea of graphs, I decided to build my first. At the time it was just a project to display the information hierarchy of all of the majors, courses, topics, and subtopics offered at Waterloo: basically, a granular map of every subject and subtopic offered at Waterloo. I called this project **Hyperloo**, and people actually started using it. I received feedback from the community around my build and how it was helping them visualize their degree. I became more fascinated with this idea, and started to think about ontology and what it could be used for. I started going down rabbit holes and discovered things like the **Semantic Web**, a project that tried to map the internet as a graph of interconnected knowledge rather than as distinct hypertext files linked together arbitrarily by DNS and URLs. Eventually, I started to see numerous companies working on ontology in different forms: companies like Palantir, Oracle, and others.
+
+## The bottleneck
+
+I realized a big impediment to the spread of ontological graphs over semantic context (graphs over big chunks of text) is the intelligence and effort required to build one. Big companies hire engineers known as **FDEs** (Forward Deployed Engineers) to go into other big companies and build ontology graphs for them. These FDEs are expensive and also do not scale: your local paint shop chain can never imagine having a personal ontology.
+
+## Stories as compressed ontologies
+
+In the quest to eventually help build this future (many companies are already working in this space), I decided to try and build a system that can automatically create an ontology out of just straight text. Corporate data is too hard to do that for initially. So why not a storybook?
+
+Stories, in many ways, are basically compressed ontologies. Over the course of the story you see the main character and side characters interact with other characters, events, and plot points. You see relationships be made, fall apart, and change, and you see the characters change. All of these can be mapped in an ontology.
+
+## What I built
+
+I built a system that can build an ontology for any storybook. I used **RDF / OWL**, and built a full pipeline that takes raw text (you literally paste in a novel) and it automatically constructs a formal knowledge graph out of it. The system first cleans and splits the text into chapters, then runs each chapter through an LLM (**Claude**) with forced structured output, meaning the model is not just generating prose back at me; it is forced to return valid JSON matching a strict schema for every extraction. It pulls out every character, location, event, and relationship in the text across multiple passes. Characters get classified as protagonists, antagonists, or supporting characters. Events get typed into things like dialogue, conflict, revelation, travel, and social events. Relationships get **reified**, which means they are not just edges between two characters; they are actual nodes in the graph with their own properties like sentiment, intensity, and temporal anchors. This lets me model how relationships evolve over time, like tracking the Darcy–Elizabeth arc from social acquaintance to rivalry to romance across multiple phases linked by an **evolvesFrom** chain.
+
+## Hard problems
+
+One of the harder problems was **coreference resolution**. The fact that "Lizzy," "Miss Bennet," and "Elizabeth Bennet" are all the same person but show up differently across chapters. After all chapters are extracted, I run a dedicated coreference pass where the LLM identifies merge groups across every character mentioned, and then I rewrite every participant reference in every event and relationship to point to the canonical ID.
+
+There is also a **causal graph validation** step so that events can reference other events they caused, but the LLM sometimes hallucinates circular causal chains, so I run a DFS cycle detection pass and break any back edges to keep the graph a clean DAG.
+
+## RDF, SPARQL, and the frontend
+
+Every entity gets minted as a URI and asserted as RDF triples. A full *Pride and Prejudice* extraction produces somewhere around 2,000 to 3,500 triples. The whole thing is queryable over **SPARQL**, so you can write queries like "show me every event Elizabeth Bennet participated in, ordered by story-time" or "trace the causal chain from Darcy's letter."
+
+I also built a **dual time axis** model borrowed from narrative theory. Basically, every event has both a story-time order (when it happened in the fictional world) and a discourse order (when the text reveals it to the reader), which lets you view the timeline as either the story or the reading experience. The frontend renders everything as an interactive force-directed graph in 2D or 3D, a swimlane timeline, and a SPARQL explorer with pre-built queries.
+
+## What is next
+
+What is next is doing the same thing for larger and more complex datasets than just storybooks. I see a future where I am doing this for organizational data for maybe a university, then maybe a large business, and eventually at the enterprise level.
+    `,
+    coverImage: "/ontology-project.png",
+    isProjectBlog: true,
+    projectId: 9,
+    tags: ["RDF", "OWL", "SPARQL", "Knowledge Graph", "Claude", "LLM", "Narrative"]
   }
 ];
 

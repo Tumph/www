@@ -21,6 +21,15 @@ type ProjectWithBlogUrl = Project & {
 
 const projects: Project[] = [
   {
+    id: 9,
+    title: "Ontology Project",
+    category: "Knowledge Graph",
+    description: "Built a pipeline that turns raw novel text into RDF/OWL knowledge graphs with LLM extraction, coreference resolution, SPARQL queries, and interactive graph and timeline views.",
+    technologies: ["RDF", "OWL", "SPARQL", "Claude", "LLM"],
+    image: "/ontology-project.png",
+    url: "/blogs/ontology-project-blog"
+  },
+  {
     id: 1,
     title: "Hyperloo",
     category: "Web Application",
