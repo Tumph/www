@@ -1,6 +1,7 @@
 {
-  "version": 2,
-  "buildCommand": "next build",
+  "framework": null,
+  "installCommand": "",
+  "buildCommand": "node build.mjs",
   "outputDirectory": "dist",
-  "framework": "nextjs"
-} 
+  "cleanUrls": true
+}
