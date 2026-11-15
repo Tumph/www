@@ -1,0 +1,15 @@
+# Checks npm packages every week and opens a pull request for each update.
+# Security fixes are opened as soon as GitHub knows about them.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    groups:
+      # Next.js and its lint config always move together.
+      next:
+        patterns: ['next', 'eslint-config-next']
+      react:
+        patterns: ['react', 'react-dom', '@types/react', '@types/react-dom']
