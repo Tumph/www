@@ -14,7 +14,10 @@ const eslintConfig = [
   {
     rules: {
       "react/no-unescaped-entities": "off",
-      "react-hooks/exhaustive-deps": "off"
+      "react-hooks/exhaustive-deps": "off",
+      // Internal links are plain <a> tags on purpose: every click is a full
+      // page load, like the 90s sites this one imitates.
+      "@next/next/no-html-link-for-pages": "off"
     }
   }
 ];

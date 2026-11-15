@@ -1,118 +1,72 @@
-import { getBlogBySlug, getAllBlogs } from '@/data/blogs';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Metadata } from 'next';
-
-// Add markdown rendering
 import ReactMarkdown from 'react-markdown';
+import Frame from '@/components/frame';
+import Picture from '@/components/picture';
+import { getAllBlogs, getBlogBySlug } from '@/data/blogs';
+import { longDate } from '@/lib/dates';
 
-// Define the params type for this page
-type BlogPostParams = {
-  slug: string;
-};
+type Params = { slug: string };
 
-// Generate metadata for the page
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<BlogPostParams> 
-}): Promise<Metadata> {
-  const resolvedParams = await params;
-  const slug = resolvedParams.slug;
-  const blog = await getBlogBySlug(slug);
-  
-  if (!blog) {
-    return {
-      title: 'Blog Post Not Found',
-    };
-  }
-  
-  return {
-    title: `${blog.title} | Aryan Gupta`,
-    description: blog.summary,
-  };
-}
-
-// Generate static paths for all blog posts
 export async function generateStaticParams() {
   const blogs = await getAllBlogs();
-  
-  return blogs.map((blog) => ({
-    slug: blog.slug,
-  }));
+  return blogs.map((blog) => ({ slug: blog.slug }));
 }
 
-export default async function BlogPostPage({ 
-  params 
-}: { 
-  params: Promise<BlogPostParams> 
-}) {
-  const resolvedParams = await params;
-  const slug = resolvedParams.slug;
-  const blog = await getBlogBySlug(slug);
-  
-  if (!blog) {
-    notFound();
-  }
-  
+export const dynamicParams = false;
+
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+  const blog = await getBlogBySlug((await params).slug);
+  if (!blog) return { title: 'Not Found' };
+  return { title: blog.title, description: blog.summary };
+}
+
+export default async function EssayPage({ params }: { params: Promise<Params> }) {
+  const { slug } = await params;
+  const posts = await getAllBlogs();
+  const index = posts.findIndex((post) => post.slug === slug);
+  if (index === -1) notFound();
+
+  const blog = posts[index];
+  // The list is newest first, so the older essay is the next one in it.
+  const older = posts[index + 1];
+  const newer = posts[index - 1];
+
   return (
-    <main className="min-h-screen bg-black text-white">
-      <div className="max-w-4xl mx-auto px-4 py-28 sm:px-6 lg:px-8">
-        <Link href="/blogs" className="inline-flex items-center text-blue-400 hover:text-blue-300 mb-8">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
-          </svg>
-          Back to all blogs
-        </Link>
-        
-        <article className="prose prose-invert prose-lg max-w-none">
-          <header className="mb-10 not-prose">
-            <div className="flex items-center text-sm text-gray-400 mb-4">
-              <time dateTime={blog.date}>{new Date(blog.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}</time>
-              
-              {blog.isProjectBlog && (
-                <>
-                  <span className="mx-2">•</span>
-                  <span className="text-blue-400">Project Blog</span>
-                </>
-              )}
-            </div>
-            
-            <h1 className="text-4xl font-bold mb-6 glow-text">{blog.title}</h1>
-            
-            <p className="text-xl text-gray-300 mb-6">{blog.summary}</p>
-            
-            <div className="flex flex-wrap gap-2 mb-8">
-              {blog.tags.map((tag) => (
-                <span key={tag} className="px-3 py-1 text-sm bg-gray-800 rounded-full text-gray-300">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            
-            {blog.coverImage && (
-              <div className="aspect-w-16 aspect-h-9 relative overflow-hidden rounded-lg mb-10 shadow-lg">
-                <Image
-                  src={blog.coverImage}
-                  alt={blog.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            )}
-          </header>
-          
-          <div className="markdown-content">
-            <ReactMarkdown>{blog.content}</ReactMarkdown>
-          </div>
-        </article>
+    <Frame current="/blogs">
+      <p className="dateline">{longDate(blog.date)}</p>
+      <h1 className="title">{blog.title}</h1>
+
+      {blog.coverImage && (
+        <p>
+          <Picture src={blog.coverImage} alt="" width={540} maxHeight={405} className="framed" priority />
+        </p>
+      )}
+
+      <ReactMarkdown
+        components={{
+          // Images inside an essay are plain <img> tags at their own size,
+          // shrunk only if wider than the column.
+          // eslint-disable-next-line @next/next/no-img-element
+          img: ({ src, alt }) => <img src={typeof src === 'string' ? src : undefined} alt={alt ?? ''} loading="lazy" />,
+        }}
+      >
+        {blog.content}
+      </ReactMarkdown>
+
+      <hr />
+      <div className="prevnext">
+        {older && (
+          <a href={`/blogs/${older.slug}`} className="prev">
+            &laquo; {older.title}
+          </a>
+        )}
+        {newer && (
+          <a href={`/blogs/${newer.slug}`} className="next">
+            {newer.title} &raquo;
+          </a>
+        )}
       </div>
-    </main>
+    </Frame>
   );
-} 
+}

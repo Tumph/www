@@ -1,22 +1,28 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import type { Metadata, Viewport } from 'next';
+import { site } from '@/data/site';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Aryan Gupta',
-  description: 'Portfolio of Aryan Gupta, showcasing work in AI, software engineering, and research.',
-}
+  metadataBase: new URL(site.url),
+  // Pages are titled plainly ("Essays", an essay's own title), like
+  // paulgraham.com, rather than "Something | Site Name".
+  title: { default: site.name, template: '%s' },
+  description: site.description,
+  alternates: {
+    types: {
+      'application/rss+xml': [{ url: '/rss.xml', title: `${site.name}: Essays` }],
+    },
+  },
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport: Viewport = {
+  colorScheme: 'light',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-black text-white`}>{children}</body>
+      <body>{children}</body>
     </html>
-  )
-} 
+  );
+}

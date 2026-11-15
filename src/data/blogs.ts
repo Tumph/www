@@ -1,3 +1,5 @@
+import { parseDate } from '@/lib/dates';
+
 export type BlogPost = {
   id: string;
   title: string;
@@ -258,7 +260,7 @@ This project was an exciting step toward understanding practical climate interve
     date: "2025-03-19",
     summary: "How I built a tool to find the most relevant job postings for a given resume",
     content: `
-    Finding a co-op is hard. Finding the right co-op is even harder.
+Finding a co-op is hard. Finding the right co-op is even harder.
 
 As a University of Waterloo student, I've spent countless hours inside WaterlooWorks - our school's co-op job portal - scrolling through thousands of postings, unsure which ones were actually worth my time. Some jobs felt like a shot in the dark. Others looked promising but yielded no response. The whole process felt like I was playing darts blindfolded.
 
@@ -659,7 +661,7 @@ What is next is doing the same thing for larger and more complex datasets than j
     date: "2026-03-27",
     summary: "The university's global reputation was forged by students and alumni in co-op, startups, and tech. When policy and culture turn against that same pipeline, the brand eats itself.",
     content: `
-* I wrote this article 100% by hand. Yes, I use - dashes sometimes in my actual writing style *
+*I wrote this article 100% by hand. Yes, I use - dashes sometimes in my actual writing style.*
 
 If you're a university administrator reading this, it's worth recognizing just how much you've enabled. Building and operating an institution at Waterloo's scale isn't trivial at all. This requires coordinating massive systems, fixing infinite problems, and making sure everything from coop infrastructure to academic operations actually functions. That foundation is what allows everything else to exist. What makes Waterloo exceptional though, is how that foundation amplifies people. 
 A university is great because of the strength of their faculty and the successes of their alumni. This is what separates a no-name university from a great one. At the end of the day, universities are simply concentrations of incredible talent into one geographic location, all working on independent studies that move the world forward (postgrad and academia) or a form of vocational training (undergrads). That is the function of a university, and on the vocational side, it's one Waterloo has been fulfilling incredibly well.
@@ -723,14 +725,21 @@ export async function getProjectBlog(projectId: number): Promise<BlogPost | unde
   return blogPosts.find(post => post.isProjectBlog && post.projectId === projectId);
 }
 
+// Newest first. Posts written on the same day keep the later-added one on top.
 export async function getAllBlogs(): Promise<BlogPost[]> {
-  return blogPosts;
+  return blogPosts
+    .map((post, index) => ({ post, index }))
+    .sort((a, b) => {
+      const byDate = parseDate(b.post.date).getTime() - parseDate(a.post.date).getTime();
+      return byDate !== 0 ? byDate : b.index - a.index;
+    })
+    .map(({ post }) => post);
 }
 
 export async function getNonProjectBlogs(): Promise<BlogPost[]> {
-  return blogPosts.filter(post => !post.isProjectBlog);
+  return (await getAllBlogs()).filter(post => !post.isProjectBlog);
 }
 
 export async function getProjectBlogs(): Promise<BlogPost[]> {
-  return blogPosts.filter(post => post.isProjectBlog);
+  return (await getAllBlogs()).filter(post => post.isProjectBlog);
 } 

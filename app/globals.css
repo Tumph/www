@@ -1,133 +1,354 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*
+  The whole look of the site. It borrows from a handful of personal sites
+  that have looked the same, and aged well, since around 2000:
+
+    Idle Words (Maciej Cegłowski)    small-caps name, grey serif
+                                     titles, a sidebar of greatest hits
+    Raw Thought (Aaron Swartz)       Georgia everywhere, pale-yellow highlight
+    ongoing (Tim Bray)               serif body, oxblood accents, narrow sidebar
+    Tom Preston-Werner               dates in a grey column beside each title
+    Bret Victor, Dan Luu             the year printed once, in the margin
+    Norvig, Knuth, Greenspun         plain pages, rules, photos in a thin frame
+    Daring Fireball                  small uppercase labels, a quiet footer
+
+  No reset and no framework: browser defaults plus what's below.
+*/
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 10, 10, 20;
-  --accent-color: 52, 152, 219;
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  --paper: #fcfbf6;
+  --ink: #222222;
+  --grey: #777777;
+  --faint: #a09a88;
+  --rule: #d9d2bd;
+  --accent: #7a1f1f;
+  --link: #1f3fa8;
+  --visited: #6a3d99;
+  --hilite: #ffff99;
+  --serif: Georgia, 'Times New Roman', Times, serif;
+  --small: Verdana, Geneva, 'DejaVu Sans', sans-serif;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      rgb(var(--background-start-rgb)),
-      rgb(var(--background-end-rgb))
-    );
-  min-height: 100vh;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.6 var(--serif);
 }
 
-/* Glowing text effect */
-.glow-text {
-  text-shadow: 0 0 10px rgba(var(--accent-color), 0.5),
-               0 0 20px rgba(var(--accent-color), 0.3),
-               0 0 30px rgba(var(--accent-color), 0.1);
+a:link {
+  color: var(--link);
 }
 
-/* Futuristic button */
-.btn-futuristic {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  z-index: 1;
+a:visited {
+  color: var(--visited);
 }
 
-.btn-futuristic::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(var(--accent-color), 0.2),
-    transparent
-  );
-  transition: all 0.6s ease;
-  z-index: -1;
+/* A yellow highlighter under whatever you're about to click. */
+a:hover {
+  background: var(--hilite);
 }
 
-.btn-futuristic:hover::before {
-  left: 100%;
+/* --- the page: left-aligned, the way pages were before everything was centered --- */
+
+.site {
+  max-width: 800px;
+  padding: 28px 16px 24px;
+  margin-left: clamp(0px, 6vw, 64px);
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+.masthead {
+  padding-bottom: 10px;
+  border-bottom: 3px double var(--rule);
 }
 
-::-webkit-scrollbar-track {
-  background: #000;
+.name {
+  display: inline-block;
+  margin: 0;
+  color: var(--accent);
+  font: normal 30px/1.1 var(--serif);
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(var(--accent-color), 0.5);
-  border-radius: 3px;
+a.name:link,
+a.name:visited {
+  color: var(--accent);
+  text-decoration: none;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(var(--accent-color), 0.8);
+
+.nav {
+  margin-top: 14px;
+  font: 12px/1.6 var(--small);
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+.nav b {
+  color: var(--ink);
 }
 
-/* Aspect ratio utility */
-.aspect-w-16 {
-  position: relative;
-  padding-bottom: calc(9 / 16 * 100%);
+.nav .sep {
+  color: var(--faint);
 }
 
-.aspect-h-9 > * {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+/* --- two columns: the text, and a narrow sidebar --- */
+
+.columns {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  margin-top: 28px;
 }
 
-/* Animated gradient border */
-.gradient-border {
-  position: relative;
-  border-radius: 0.5rem;
-  overflow: hidden;
+.main {
+  flex: 0 1 540px;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(
-    45deg,
-    #3498db,
-    #2ecc71,
-    #3498db
-  );
-  background-size: 400% 400%;
-  z-index: -1;
-  animation: gradientBorder 6s ease infinite;
-  border-radius: 0.6rem;
+.sidebar {
+  flex: 0 0 196px;
+  font: 11px/1.55 var(--small);
+  color: #555555;
 }
 
-@keyframes gradientBorder {
-  0% {
-    background-position: 0% 50%;
+.sidebar h2 {
+  margin: 0 0 8px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--accent);
+  font: bold 10px/1.4 var(--small);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sidebar p {
+  margin: 0 0 12px;
+}
+
+.sidebar p + h2,
+.sidebar h2:not(:first-child) {
+  margin-top: 24px;
+}
+
+.sidebar p > a:first-child {
+  font: 13px/1.35 var(--serif);
+}
+
+/* --- text --- */
+
+.title {
+  margin: 0 0 18px;
+  color: #444444;
+  font: normal 28px/1.2 var(--serif);
+}
+
+/* Small grey print: dates, places, what something was built with. */
+.meta,
+.dateline {
+  color: var(--grey);
+  font: 11px/1.6 var(--small);
+}
+
+.dateline {
+  margin: 0 0 4px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.main p,
+.main ul,
+.main ol,
+.main blockquote,
+.main pre,
+.main figure {
+  margin: 0 0 1em;
+}
+
+.main h2 {
+  margin: 1.8em 0 0.6em;
+  color: #444444;
+  font: normal 21px/1.25 var(--serif);
+}
+
+.main h3,
+.main h4 {
+  margin: 1.4em 0 0.4em;
+  font: bold 16px/1.3 var(--serif);
+}
+
+.main ul,
+.main ol {
+  padding-left: 1.5em;
+}
+
+.main li {
+  margin-bottom: 0.3em;
+}
+
+.main img {
+  max-width: 100%;
+  height: auto;
+}
+
+.main blockquote {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 3px solid var(--rule);
+  color: #444444;
+}
+
+.main code {
+  font: 0.85em Menlo, Monaco, 'Courier New', monospace;
+}
+
+.main pre {
+  overflow-x: auto;
+  padding: 10px 12px;
+  background: #f3efe2;
+  border: 1px solid #e3dcc5;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.main hr,
+.rule {
+  height: 0;
+  margin: 2em 0 1em;
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+/* A picture in a thin frame, like a print with a white mat. */
+.framed {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 3px;
+  background: #ffffff;
+  border: 1px solid #cfc8b4;
+}
+
+.main figure figcaption {
+  margin-top: 4px;
+  color: var(--grey);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.main .section {
+  margin: 2em 0 0.8em;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--accent);
+  font: bold 10px/1.4 var(--small);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* --- essay index: year, date, title --- */
+
+.index {
+  margin: 0 0 1em;
+  border-collapse: collapse;
+}
+
+.index td {
+  padding: 3px 0;
+  vertical-align: baseline;
+}
+
+.index .year-start td {
+  padding-top: 14px;
+}
+
+.index-year {
+  width: 46px;
+  color: var(--accent);
+  font: bold 11px var(--small);
+}
+
+.index-date {
+  width: 56px;
+  color: var(--faint);
+  font: 11px var(--small);
+  white-space: nowrap;
+}
+
+/* --- essay pages --- */
+
+.prevnext {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font: 11px/1.5 var(--small);
+}
+
+.prevnext .next {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* --- projects: a framed picture, words beside it --- */
+
+.project {
+  display: flow-root;
+  margin-bottom: 1.4em;
+}
+
+.project .framed {
+  float: left;
+  max-width: 32%;
+  margin: 4px 14px 6px 0;
+}
+
+.project-text {
+  display: flow-root;
+}
+
+.project-text b {
+  font-size: 17px;
+}
+
+/* --- footer --- */
+
+.footer {
+  margin-top: 48px;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+  color: var(--faint);
+  font: 10px/1.6 var(--small);
+}
+
+/* --- phones: one column, the sidebar after the text --- */
+
+@media (max-width: 800px) {
+  .site {
+    margin-left: 0;
+    padding-top: 20px;
   }
-  50% {
-    background-position: 100% 50%;
+
+  .columns {
+    display: block;
+    margin-top: 22px;
   }
-  100% {
-    background-position: 0% 50%;
+
+  .sidebar {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 3px double var(--rule);
+    font-size: 12px;
   }
-} 
+
+  .name {
+    font-size: 27px;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+}
