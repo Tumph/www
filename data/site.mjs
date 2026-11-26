@@ -15,7 +15,7 @@ export const site = {
   // The picture on the home page, with the caption printed under it.
   homeImage: {
     src: '/tell.jpg',
-    alt: 'The Tell home page: Tell does the work. You just approve it.',
+    alt: 'The Tell home page: Your autonomous revenue team.',
     caption: 'trytell.ai',
     href: 'https://trytell.ai',
   },
